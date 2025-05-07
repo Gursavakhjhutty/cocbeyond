@@ -4,8 +4,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import fetch from 'node-fetch';
-import bodyParser from 'body-parser';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import fs from 'fs';
@@ -13,7 +11,6 @@ import fs from 'fs';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
-const cors = require('cors');
 
 const allowedOrigins = ['https://gursavakhjhutty.github.io'];
 
@@ -32,10 +29,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json());
 
 const users = {};
-const USERS_DB = [];
+const USERS_DB = {};
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret_dev_key';
 
