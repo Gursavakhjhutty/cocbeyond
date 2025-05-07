@@ -1,0 +1,185 @@
+{
+  "name": "",
+  "familyname": "",
+  "age": "",
+  "occupation": "Chef",
+  "residence": "",
+  "birthplace": "",
+  "backstory": {
+    "personalDescription": "",
+    "ideology": "",
+    "significantPeople": "",
+    "meaningfulLocations": "",
+    "treasuredPossessions": "",
+    "traits": "",
+    "injuriesScars": "",
+    "phobiasManias": "",
+    "arcaneTomes": "",
+    "encounters": "",
+    "generalBackstory": ""
+  },
+  "equipment": {
+    "weapons": "",
+    "tools": "",
+    "clothes": "",
+    "special": "",
+    "other": ""
+  },
+  "attributes": {
+    "STR": 70,
+    "CON": 60,
+    "DEX": 65,
+    "INT": 55,
+    "SIZ": 85,
+    "POW": 60,
+    "APP": 30,
+    "EDU": 75,
+    "MVR": 0,
+    "LUCK": 30,
+    "HP": 14,
+    "SAN": 60,
+    "MP": 12,
+    "DODGE": 32,
+    "Personal_Points": 110
+  },
+  "skills": [
+    {
+      "name": "Accounting",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Anthropology",
+      "base": 1,
+      "value": 1,
+      "improved": false
+    },
+    {
+      "name": "Appraise",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Archaeology",
+      "base": 1,
+      "value": 1,
+      "improved": false
+    },
+    {
+      "name": "Charm",
+      "base": 15,
+      "value": 15,
+      "improved": false
+    },
+    {
+      "name": "Climb",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Credit Rating",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Cthulhu Mythos",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Dodge",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Fast Talk",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Fighting (Brawl)",
+      "base": 25,
+      "value": 25,
+      "improved": false
+    },
+    {
+      "name": "Firearms (Handgun)",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "First Aid",
+      "base": 30,
+      "value": 30,
+      "improved": false
+    },
+    {
+      "name": "History",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Library Use",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Listen",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Navigate",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Occult",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Persuade",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Psychology",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Spot Hidden",
+      "base": 25,
+      "value": 25,
+      "improved": false
+    },
+    {
+      "name": "Stealth",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Survival",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    }
+  ]
+}

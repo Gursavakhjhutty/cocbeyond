@@ -1,0 +1,219 @@
+{
+  "name": "Han",
+  "familyname": "Solo",
+  "age": "54",
+  "occupation": "Farmer",
+  "residence": "Arkham, Mass",
+  "birthplace": "New York City, New York",
+  "backstory": {
+    "personalDescription": "",
+    "ideology": "",
+    "significantPeople": "",
+    "meaningfulLocations": "",
+    "treasuredPossessions": "",
+    "traits": "",
+    "injuriesScars": "",
+    "phobiasManias": "",
+    "arcaneTomes": "",
+    "encounters": "",
+    "generalBackstory": ""
+  },
+  "equipment": {
+    "weapons": {
+      "name": "Double-Barreled Shotgun",
+      "damage": "4D6",
+      "range": "50 yards",
+      "usesPerRound": "2",
+      "bullets": "N/A",
+      "cost": "$40",
+      "malfunction": "95+"
+    },
+    "tools": "",
+    "clothes": "",
+    "special": [
+      {
+        "name": "Pitchfork",
+        "quantity": 1,
+        "weight": 5
+      },
+      {
+        "name": "Shovel",
+        "quantity": 1,
+        "weight": 4
+      },
+      {
+        "name": "Work Boots",
+        "quantity": 1,
+        "weight": 2
+      },
+      {
+        "name": "Oil Lamp",
+        "quantity": 1,
+        "weight": 1
+      },
+      {
+        "name": "Worn Leather Satchel",
+        "quantity": 1,
+        "weight": 3
+      }
+    ],
+    "other": ""
+  },
+  "attributes": {
+    "STR": 65,
+    "CON": 45,
+    "DEX": 70,
+    "INT": 70,
+    "SIZ": 55,
+    "POW": 55,
+    "APP": 65,
+    "EDU": 55,
+    "MOV": 9,
+    "LUCK": 40,
+    "HP": 10,
+    "SAN": 55,
+    "MP": 11,
+    "DODGE": 35,
+    "Personal_Points": 140
+  },
+  "skills": [
+    {
+      "name": "Accounting",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Anthropology",
+      "base": 1,
+      "value": 1,
+      "improved": false
+    },
+    {
+      "name": "Appraise",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Archaeology",
+      "base": 1,
+      "value": 1,
+      "improved": false
+    },
+    {
+      "name": "Charm",
+      "base": 15,
+      "value": 15,
+      "improved": false
+    },
+    {
+      "name": "Climb",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Credit Rating",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Cthulhu Mythos",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Dodge",
+      "base": 0,
+      "value": 0,
+      "improved": false
+    },
+    {
+      "name": "Fast Talk",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Fighting (Brawl)",
+      "base": 25,
+      "value": 25,
+      "improved": false
+    },
+    {
+      "name": "Firearms (Handgun)",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "First Aid",
+      "base": 30,
+      "value": 30,
+      "improved": false
+    },
+    {
+      "name": "History",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Library Use",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Listen",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Navigate",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Occult",
+      "base": 5,
+      "value": 5,
+      "improved": false
+    },
+    {
+      "name": "Persuade",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Psychology",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    },
+    {
+      "name": "Spot Hidden",
+      "base": 25,
+      "value": 25,
+      "improved": false
+    },
+    {
+      "name": "Stealth",
+      "base": 20,
+      "value": 20,
+      "improved": false
+    },
+    {
+      "name": "Survival",
+      "base": 10,
+      "value": 10,
+      "improved": false
+    }
+  ]
+}
