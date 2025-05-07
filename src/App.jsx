@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { SKILLS, generateAttributes, rollNd6, fetchGeminiDescription, generateOccupationData, useOccupationEffect
 } from './AppLogic.js';
-import '/particles.css';
+import './particles.css';
+import './particles-init.js';
 
 
 // coc_webapp_starter - React + Tailwind project
