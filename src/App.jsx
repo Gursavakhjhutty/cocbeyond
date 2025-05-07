@@ -3,7 +3,7 @@ import './App.css'
 import { SKILLS, generateAttributes, rollNd6, fetchGeminiDescription, generateOccupationData, useOccupationEffect
 } from './AppLogic.js';
 import './particles.css';
-import './particles-init.js';
+import '../public/particles-init.js';
 
 
 // coc_webapp_starter - React + Tailwind project
@@ -80,12 +80,6 @@ function App() {
       }
     }, []);
 
-    useEffect(() => {
-      const script = document.createElement("script");
-      script.src = "/particles-init.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }, []);
 
     useOccupationEffect(debouncedOccupation, setOccupationDetails);
 
