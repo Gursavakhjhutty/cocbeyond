@@ -487,7 +487,7 @@ function App() {
                     attributes: { ...newAttributes },
                   }));
                 }}
-                className="px-6 py-2 mb-4 text-lg font-bold tracking-wider uppercase rounded-xl 
+                className="px-3 py-1 mb-2 text-md font-bold tracking-wider uppercase rounded-lg 
                           shadow-md transition-all duration-200
                           bg-eldritch-accent text-black 
                           hover:bg-eldritch-highlight hover:text-white 
