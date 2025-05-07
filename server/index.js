@@ -97,6 +97,10 @@ async function queryGemini(prompt) {
     return data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
 };
 
+app.get('/api/ping', (req, res) => {
+  res.json({ message: 'Server is live and CORS is configured.' });
+});
+
 app.post('/api/save-character', authenticateToken, (req, res) => {
     const userEmail = req.user.email;
     const character = req.body.character;
