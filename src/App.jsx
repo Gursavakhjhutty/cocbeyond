@@ -489,7 +489,7 @@ function App() {
                     },
                   }));
                 }}
-                className="text-xl font-bold mb-3 text-eldritch-highlight uppercase tracking-wide border-r-emerald-300"
+                className="text-xl font-bold mb-3 text-eldritch-highlight uppercase tracking-wide rounded-xl shadow-lg border-r-emerald-300"
               >
                 Roll For Attributes
               </button>
