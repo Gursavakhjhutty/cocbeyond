@@ -13,19 +13,25 @@ import fs from 'fs';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
+const cors = require('cors');
+
+const allowedOrigins = ['https://gursavakhjhutty.github.io'];
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl)
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('CORS not allowed'));
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 
 const users = {};
@@ -176,8 +182,6 @@ app.post('/api/occupation-description', async (req, res) => {
     res.json({ description });
   } catch (err) {
     console.error('Gemini API Error:', err);
-    const data = await response.json();
-    console.log('Gemini Raw Response:', JSON.stringify(data, null, 2));
     res.status(500).json({ description: 'Description unavailable.' });
   }
 });
