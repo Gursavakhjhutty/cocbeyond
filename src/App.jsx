@@ -484,14 +484,16 @@ function App() {
                   const newAttributes = generateAttributes();
                   setCharacter((prev) => ({
                     ...prev,
-                    attributes: {
-                      ...newAttributes,
-                    },
+                    attributes: { ...newAttributes },
                   }));
                 }}
-                className="text-xl font-bold mb-3 text-eldritch-highlight uppercase tracking-wide rounded-xl shadow-lg border-r-emerald-300"
+                className="px-6 py-2 mb-4 text-lg font-bold tracking-wider uppercase rounded-xl 
+                          shadow-md transition-all duration-200
+                          bg-eldritch-accent text-black 
+                          hover:bg-eldritch-highlight hover:text-white 
+                          active:scale-95 border-2 border-eldritch-accent"
               >
-                Roll For Attributes
+                🎲 Roll Attributes
               </button>
               <div className="grid grid-cols-3 gap-4">
                 {Object.entries(character.attributes).map(([attr, val]) => (
