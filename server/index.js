@@ -14,10 +14,11 @@ dotenv.config();
 const app = express();
 app.use(cors({
   origin: 'https://gursavakhjhutty.github.io',
-  methods: ['GET', 'POST'],
-  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-app.use(bodyParser.json());
+app.options('*', cors());
+app.use(express.json());
 
 const users = {};
 const USERS_DB = [];
