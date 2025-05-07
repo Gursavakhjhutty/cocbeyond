@@ -4,32 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Call of Cthulhu Character Creator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
-    <script src="./particles-init.js" defer></script>
-    <div id="tsparticles"></div>
-    <script type="module">
-      const base = import.meta.env.BASE_URL;
-    
-      const loadParticles = () => {
-        const initScript = document.createElement('script');
-        initScript.src = base + 'particles-init.js';
-        document.body.appendChild(initScript);
-      };
-    
-      const coreScript = document.createElement('script');
-      coreScript.src = base + 'particles.js';
-      coreScript.onload = loadParticles;
-      document.body.appendChild(coreScript);
-    </script>
+    <!-- Particle Container (goes before root so it's in background) -->
     <div id="particles-js" class="fixed inset-0 z-0"></div>
-    <div id="root"></div>
+
+    <!-- App Root -->
+    <div id="root" class="relative z-10"></div>
+
+    <!-- Load Main App -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Load particles.js from CDN (only once) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Your particles-init file (must be in public folder) -->
+    <script src="/particles-init.js" defer></script>
   </body>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
 </html>

@@ -12,7 +12,11 @@ import fs from 'fs';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://gursavakhjhutty.github.io',
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
 app.use(bodyParser.json());
 
 const users = {};
