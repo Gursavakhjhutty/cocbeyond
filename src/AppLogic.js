@@ -75,7 +75,7 @@ export function splitSkillsIntoColumns(skills, columns) {
 }
 
 export async function fetchGeminiDescription(occupation) {
-  const res = await fetch("http://localhost:5001/api/occupation-description", {
+  const res = await fetch("https://coc-gemini-api.onrender.com/api/occupation-description", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ occupation }),

@@ -247,7 +247,7 @@ function App() {
       }
     
       try {
-        const response = await fetch('http://localhost:5001/api/save-character', {
+        const response = await fetch('https://coc-gemini-api.onrender.com/api/save-character', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -278,7 +278,7 @@ function App() {
       }
     
       try {
-        const response = await fetch('http://localhost:5001/api/load-character', {
+        const response = await fetch('https://coc-gemini-api.onrender.com/api/load-character', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -311,7 +311,7 @@ function App() {
       };
     
       const handleSubmit = async () => {
-        const endpoint = `http://localhost:5001/api/${mode}`;
+        const endpoint = `https://coc-gemini-api.onrender.com/api/${mode}`;
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -395,12 +395,12 @@ function App() {
     const autoGenerateEquipment = async () => {
       try {
         const [equipRes, weaponRes] = await Promise.all([
-          fetch('http://localhost:5001/api/generate-equipment', {
+          fetch('https://coc-gemini-api.onrender.com/api/generate-equipment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ occupation: character.occupation })
           }),
-          fetch('http://localhost:5001/api/generate-weapon', {
+          fetch('https://coc-gemini-api.onrender.com/api/generate-weapon', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ occupation: character.occupation })
@@ -450,7 +450,7 @@ function App() {
     const handleAuthSubmit = async () => {
       const endpoint = authMode === 'login' ? 'login' : 'signup';
       try {
-        const res = await fetch(`http://localhost:5001/api/${endpoint}`, {
+        const res = await fetch(`https://coc-gemini-api.onrender.com/api/${endpoint}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: authEmail, password: authPassword }),
