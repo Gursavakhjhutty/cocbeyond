@@ -8,6 +8,8 @@ import './particles-init.js';
 
 // coc_webapp_starter - React + Tailwind project
 
+
+
 function App() {
   const [roll, setRoll] = useState(null);
   const [step, setStep] = useState(0);
@@ -878,7 +880,6 @@ function App() {
     return (
       <>
         {/* Particle background layer */}
-        <div id="particles-js" className="fixed inset-0 z-0"></div>
 
         <div className="relative z-0 min-h-screen bg-black/5 text-white p-6 font-mono rounded-xl">
           <div className="flex justify-between items-center mb-6 border-b-4 border-eldritch-accent text-eldritch-highlight pb-2">
