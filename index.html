@@ -4,19 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/cocbeyond/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/cocbeyond/assets/index-Bf5sOuFT.js"></script>
+    <title>Call of Cthulhu Character Creator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/cocbeyond/assets/index-BtOTDsZP.js"></script>
     <link rel="stylesheet" crossorigin href="/cocbeyond/assets/index-C_eLekAx.css">
   </head>
   <body>
-    <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
-    <script src="./particles-init.js" defer></script>
-    <div id="tsparticles"></div>
+    <!-- Particle Container (goes before root so it's in background) -->
     <div id="particles-js" class="fixed inset-0 z-0"></div>
-    <div id="root" class="z-10"></div>
+
+    <!-- App Root -->
+    <div id="root" class="relative z-10"></div>
+
+    <!-- Load Main App -->
+
+    <!-- Load particles.js from CDN (only once) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Your particles-init file (must be in public folder) -->
+    <script src="/cocbeyond/particles-init.js" defer></script>
   </body>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond&display=swap" rel="stylesheet">
 </html>
