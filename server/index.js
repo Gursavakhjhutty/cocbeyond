@@ -12,13 +12,15 @@ import fs from 'fs';
 
 dotenv.config();
 const app = express();
-app.use(cors({
+const PORT = process.env.PORT || 5000;
+const corsOptions = {
   origin: 'https://gursavakhjhutty.github.io',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-app.options('*', cors());
-app.use(express.json());
+};
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
 
 const users = {};
 const USERS_DB = [];
