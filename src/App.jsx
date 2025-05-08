@@ -388,7 +388,7 @@ function App() {
 
     const autoGenerateEquipment = async () => {
       try {
-        const [equipRes, weaponRes, toolRes] = await Promise.all([
+        const [equipRes, weaponRes, toolRes, clothesRes] = await Promise.all([
           fetch('https://cocbeyond.onrender.com/api/generate-equipment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
