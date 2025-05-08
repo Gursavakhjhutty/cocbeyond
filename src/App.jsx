@@ -883,16 +883,11 @@ function App() {
                 <div className="w-full md:w-1/2">
                   <h3 className="text-lg font-semibold text-eldritch-link mb-2">Equipment</h3>
                   {Object.entries(character.equipment).map(([category, items]) => (
-                    <div key={category} className="mb-3">
+                    <div key={category} className="mb-4">
                       <p className="text-eldritch-accent font-bold mb-1 uppercase tracking-wide">{category}</p>
 
-                      {Array.isArray(items) ? (
-                        items.map((item, i) => (
-                          <p key={i} className="text-sm text-white">
-                            • {item.name} (Qty: {item.quantity}, Wt: {item.weight} lbs)
-                          </p>
-                        ))
-                      ) : typeof items === 'object' && items !== null ? (
+                      {/* Handle Weapon Object */}
+                      {category === "weapons" && items && typeof items === 'object' ? (
                         <div className="text-sm text-white space-y-1">
                           <p>
                             {items.name} – {items.damage}, {items.range}, {items.usesPerRound} /rnd,
@@ -908,6 +903,18 @@ function App() {
                             <p className="text-xs text-eldritch-accent">🎲 Damage Rolled: {weaponRollResult}</p>
                           )}
                         </div>
+
+                      // Handle Tool or Clothing Arrays
+                      ) : Array.isArray(items) ? (
+                        <div className="space-y-1">
+                          {items.map((item, i) => (
+                            <p key={i} className="text-sm text-white">
+                              • {item.name}{item.description ? ` – ${item.description}` : ''} (Qty: {item.quantity}, Wt: {item.weight} lbs{item.cost ? `, Cost: ${item.cost}` : ''})
+                            </p>
+                          ))}
+                        </div>
+
+                      // Handle fallback case (string or unexpected)
                       ) : (
                         <p className="text-sm text-white">{items}</p>
                       )}
