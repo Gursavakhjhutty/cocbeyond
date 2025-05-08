@@ -193,16 +193,7 @@ app.post('/api/generate-equipment', async (req, res) => {
     const { occupation } = req.body;
     if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
   
-    const prompt = `
-You are an API that returns only raw JSON.
-
-Return a JSON array of 3 to 5 equipment items appropriate for a Call of Cthulhu character with the occupation "${occupation}". Each item must include:
-- name (string)
-- quantity (number)
-- weight (number in pounds)
-
-Respond with ONLY a JSON array. Do not use markdown, backticks, or explanation.
-`;
+    const prompt = `You are an API that returns only raw JSON. Return a JSON array of 3 to 5 equipment items appropriate for a Call of Cthulhu character with the occupation "${occupation}". Each item must include: - name (string) - quantity (number) - weight (number in pounds) Respond with ONLY a JSON array. Do not use markdown, backticks, or explanation.`;
   
     try {
       const rawText = await queryGemini(prompt);
@@ -218,20 +209,7 @@ app.post('/api/generate-weapon', async (req, res) => {
     const { occupation } = req.body;
     if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
   
-    const prompt =  `
-    You are an API that returns only raw JSON.
-    
-    Return a JSON object representing a weapon suitable for a Call of Cthulhu character with the occupation "${occupation}". The object should contain:
-    - name
-    - damage (e.g., "2D6")
-    - range (e.g., "100 yards")
-    - usesPerRound (e.g., "1" or "Automatic")
-    - bullets (number or null)
-    - cost (e.g., "$20")
-    - malfunction (e.g., "98+")
-    
-    Return only raw JSON. No markdown or explanation.
-    `;
+    const prompt =  ` You are an API that returns only raw JSON. Return a JSON object representing a weapon suitable for a Call of Cthulhu character with the occupation "${occupation}". The object should contain: - name - damage (e.g., "2D6") - range (e.g., "100 yards") - usesPerRound (e.g., "1" or "Automatic") - bullets (number or null) - cost (e.g., "$20") - malfunction (e.g., "98+") Return only raw JSON. No markdown or explanation.`;
   
     try {
       const rawText = await queryGemini(prompt);
@@ -247,18 +225,7 @@ app.post('/api/generate-tools', async (req, res) => {
   const { occupation } = req.body;
   if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
 
-  const prompt = `
-You are an API that returns only raw JSON.
-
-Return a JSON array of exactly 2 tools appropriate for a 1920s Call of Cthulhu character with the occupation "${occupation}". Each object must contain:
-- name (string)
-- description (short, 1 sentence)
-- cost (string, e.g., "$10")
-- weight (number in pounds)
-- useCase (brief explanation)
-
-Return only raw JSON. No markdown, no formatting, no explanation.
-`;
+  const prompt = ` You are an API that returns only raw JSON. Return a JSON array of exactly 2 tools appropriate for a 1920s Call of Cthulhu character with the occupation "${occupation}". Each object must contain: - name (string) - description (short, 1 sentence) - cost (string, e.g., "$10") - weight (number in pounds) - useCase (brief explanation) Return only raw JSON. No markdown, no formatting, no explanation.`;
 
   try {
     const rawText = await queryGemini(prompt);
@@ -274,17 +241,7 @@ app.post('/api/generate-clothes', async (req, res) => {
   const { occupation } = req.body;
   if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
 
-  const prompt =  `
-  You are an API that returns only raw JSON.
-  
-  Return a JSON array of 3 to 4 clothing items appropriate for a Call of Cthulhu character with the occupation "${occupation}". Each item must include:
-  - name (string)
-  - description (short sentence)
-  - cost (string)
-  - weight (number in pounds)
-  
-  Respond with only raw JSON. Do NOT include backticks, markdown, or explanation.
-  `;
+  const prompt =  ` You are an API that returns only raw JSON. Return a JSON array of 3 to 4 clothing items appropriate for a Call of Cthulhu character with the occupation "${occupation}". Each item must include: - name (string) - description (short sentence) - cost (string) - weight (number in pounds) Respond with only raw JSON. Do NOT include backticks, markdown, or explanation.`;
 
   try {
     const rawText = await queryGemini(prompt);

@@ -444,7 +444,8 @@ function App() {
             useCase: item.useCase || ''
             }))
           : [];
-
+        
+        console.log("Clothes API returned:", clothes);
         const cleanedClothes = Array.isArray(clothes)
           ? clothes.map(item => ({
             name: item.name || '',
