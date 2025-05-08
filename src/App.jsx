@@ -438,7 +438,7 @@ function App() {
           ? tool.map(item => ({
             name: item.name || '',
             description: item.description || '',
-            quantity: item.quantity || '',
+            quantity: item.quantity || 1,
             cost: item.cost || '',
             weight: parseFloat(item.weight) || 0,
             useCase: item.useCase || ''
@@ -446,10 +446,10 @@ function App() {
           : [];
 
         const cleanedClothes = Array.isArray(clothes)
-          ? tool.map(item => ({
+          ? clothes.map(item => ({
             name: item.name || '',
             description: item.description || '',
-            quantity: item.quantity || '',
+            quantity: item.quantity || 1,
             cost: item.cost || '',
             weight: parseFloat(item.weight) || 0
             }))
