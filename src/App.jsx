@@ -403,12 +403,18 @@ function App() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ occupation: character.occupation })
+          }),
+          fetch('https://cocbeyond.onrender.com/api/generate-clothes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ occupation: character.occupation })
           })
         ]);
 
         const { equipment } = await equipRes.json();
         const { weapon } = await weaponRes.json();
         const { tool } = await toolRes.json();
+        const { clothes } = await clothesRes.json();
 
         const cleanedItems = Array.isArray(equipment)
           ? equipment.map(item => ({
@@ -432,11 +438,23 @@ function App() {
           ? tool.map(item => ({
             name: item.name || '',
             description: item.description || '',
+            quantity: item.quantity || '',
             cost: item.cost || '',
             weight: parseFloat(item.weight) || 0,
             useCase: item.useCase || ''
             }))
           : [];
+
+        const cleanedClothes = Array.isArray(clothes)
+          ? tool.map(item => ({
+            name: item.name || '',
+            description: item.description || '',
+            quantity: item.quantity || '',
+            cost: item.cost || '',
+            weight: parseFloat(item.weight) || 0
+            }))
+          : [];
+
 
         setCharacter(prev => ({
           ...prev,
@@ -444,7 +462,8 @@ function App() {
             ...prev.equipment,
             special: cleanedItems,
             weapons: cleanedWeapon,
-            tools: cleanedTools
+            tools: cleanedTools,
+            clothes: cleanedClothes
           }
         }));
       } catch (err) {

@@ -265,6 +265,31 @@ app.post('/api/generate-tools', async (req, res) => {
   }
 });
 
+app.post('/api/generate-clothes', async (req, res) => {
+  const { occupation } = req.body;
+  if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
+
+  const prompt = `
+  Give a JSON array of exactly 4 articles of clothing appropriate for a Call of Cthulhu character with the occupation "${occupation}".
+  Each clothing item should include:
+  - name (string)
+  - description (1 short sentence)
+  - cost (e.g. "$10")
+  - weight (number in pounds)
+
+  Respond with **raw JSON only**, no markdown or explanation.
+  `;
+
+  try {
+    const rawText = await queryGemini(prompt);
+    const tool = extractJsonFromGeminiResponse(rawText);
+    res.json({ tool });
+  } catch (err) {
+    console.error('Gemini Clothing Error:', err);
+    res.status(500).json({ error: 'Failed to generate Clothes.' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
