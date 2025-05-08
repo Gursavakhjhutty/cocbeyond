@@ -884,18 +884,19 @@ function App() {
                   <h3 className="text-lg font-semibold text-eldritch-link mb-2">Equipment</h3>
                   {Object.entries(character.equipment).map(([category, items]) => (
                     <div key={category} className="mb-4">
-                      <p className="text-eldritch-accent font-bold mb-1 uppercase tracking-wide">{category}</p>
+                      <p className="text-eldritch-accent font-bold mb-2 uppercase tracking-wide">{category}</p>
 
-                      {/* Handle Weapon Object */}
+                      {/* Weapon (object) */}
                       {category === "weapons" && items && typeof items === 'object' ? (
-                        <div className="text-sm text-white space-y-1">
+                        <div className="bg-eldritch-panel/25 p-3 rounded border border-gray-700 space-y-1 text-sm text-white">
+                          <p className="font-semibold text-eldritch-highlight">{items.name}</p>
                           <p>
-                            {items.name} – {items.damage}, {items.range}, {items.usesPerRound} /rnd,
+                            Damage: {items.damage}, Range: {items.range}, Uses/Round: {items.usesPerRound}<br />
                             Bullets: {items.bullets || 'N/A'}, Cost: {items.cost}, Malfunction: {items.malfunction}
                           </p>
                           <button
                             onClick={() => setWeaponRollResult(rollWeaponDamage(items.damage))}
-                            className="px-2 py-1 text-xs bg-eldritch-link hover:bg-eldritch-link/80 rounded"
+                            className="mt-1 px-2 py-1 text-xs bg-eldritch-link hover:bg-eldritch-link/80 rounded"
                           >
                             Roll Damage
                           </button>
@@ -904,17 +905,23 @@ function App() {
                           )}
                         </div>
 
-                      // Handle Tool or Clothing Arrays
+                      // Array-based equipment (tools, clothes, etc.)
                       ) : Array.isArray(items) ? (
-                        <div className="space-y-1">
+                        <div className="grid grid-cols-1 gap-2">
                           {items.map((item, i) => (
-                            <p key={i} className="text-sm text-white">
-                              • {item.name}{item.description ? ` – ${item.description}` : ''} (Qty: {item.quantity}, Wt: {item.weight} lbs{item.cost ? `, Cost: ${item.cost}` : ''})
-                            </p>
+                            <div key={i} className="bg-eldritch-panel/25 p-3 rounded border border-gray-700 text-sm text-white">
+                              <p className="font-semibold text-eldritch-highlight">{item.name}</p>
+                              {item.description && <p className="italic text-xs text-gray-400 mb-1">{item.description}</p>}
+                              <p>
+                                Qty: {item.quantity}, Wt: {item.weight} lbs
+                                {item.cost ? `, Cost: ${item.cost}` : ''}
+                                {item.useCase ? `, Use: ${item.useCase}` : ''}
+                              </p>
+                            </div>
                           ))}
                         </div>
 
-                      // Handle fallback case (string or unexpected)
+                      // Text fallback
                       ) : (
                         <p className="text-sm text-white">{items}</p>
                       )}
