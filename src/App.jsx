@@ -450,7 +450,7 @@ function App() {
             name: item.name || '',
             description: item.description || '',
             quantity: item.quantity || 1,
-            cost: item.cost || '',
+            cost: item.cost || 0,
             weight: parseFloat(item.weight) || 0
             }))
           : [];
