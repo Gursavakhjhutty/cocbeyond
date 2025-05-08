@@ -154,7 +154,10 @@ app.post('/api/signup', (req, res) => {
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     const user = USERS_DB[email];
-    if (!user || user.password !== password) return res.status(401).json({ error: 'Invalid credentials' });
+    if (!user || user.password !== password) {
+      console.warn('Login failed for:', email);
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
   
     const token = jwt.sign({ email }, process.env.JWT_SECRET);
     res.json({ token });
