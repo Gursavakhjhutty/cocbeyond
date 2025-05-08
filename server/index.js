@@ -239,6 +239,32 @@ app.post('/api/generate-weapon', async (req, res) => {
     }
 });
 
+app.post('/api/generate-tools', async (req, res) => {
+  const { occupation } = req.body;
+  if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
+
+  const prompt = `
+  Give a JSON array of exactly 2 tools appropriate for a Call of Cthulhu character with the occupation "${occupation}".
+  Each tool should include:
+  - name (string)
+  - description (1 short sentence)
+  - cost (e.g. "$10")
+  - weight (number in pounds)
+  - useCase (brief explanation of what the tool is used for)
+
+  Respond with **raw JSON only**, no markdown or explanation.
+  `;
+
+  try {
+    const rawText = await queryGemini(prompt);
+    const tool = extractJsonFromGeminiResponse(rawText);
+    res.json({ tool });
+  } catch (err) {
+    console.error('Gemini Tool Error:', err);
+    res.status(500).json({ error: 'Failed to generate Tool.' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

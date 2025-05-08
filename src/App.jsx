@@ -168,7 +168,7 @@ function App() {
           },
         }));
       };
-    
+
     const handleEquipmentChange = (e) => {
         const { name, value } = e.target;
         setCharacter((prev) => ({
@@ -180,8 +180,8 @@ function App() {
         }));
       };
 
-      
-    
+
+
     const handleSkillChange = (index, value) => {
         setCharacter((prev) => {
           const updatedSkills = [...prev.skills];
@@ -189,7 +189,7 @@ function App() {
           return { ...prev, skills: updatedSkills };
         });
       };
-    
+
     const toggleSkillImproved = (index) => {
         setCharacter((prev) => {
           const updatedSkills = [...prev.skills];
@@ -197,7 +197,7 @@ function App() {
           return { ...prev, skills: updatedSkills };
         });
       };
-    
+
     const splitSkillsIntoColumns = (skills, columns) => {
         const perColumn = Math.ceil(skills.length / columns);
         return Array.from({ length: columns }, (_, colIndex) =>
@@ -212,24 +212,24 @@ function App() {
     const rollWeaponDamage = (damageString) => {
       const regex = /^(\d*)d(\d+)([+-]\d+)?$/i;
       const match = damageString.toLowerCase().replace(/\s+/g, '').match(regex);
-    
+
       if (!match) return 'Invalid';
-    
+
       const numDice = parseInt(match[1] || '1', 10); // Defaults to 1 if blank
       const diceSides = parseInt(match[2], 10);
       const modifier = parseInt(match[3] || '0', 10);
-    
+
       let total = 0;
       for (let i = 0; i < numDice; i++) {
         total += Math.floor(Math.random() * diceSides) + 1;
       }
-    
+
       return total + modifier;
     };
 
     const saveCharacter = async () => {
       const token = localStorage.getItem('authToken');
-      
+
       const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -239,7 +239,7 @@ function App() {
         alert("You must be logged in to save.");
         return;
       }
-    
+
       try {
         const response = await fetch('https://cocbeyond.onrender.com/api/save-character', {
           method: 'POST',
@@ -249,7 +249,7 @@ function App() {
           },
           body: JSON.stringify({ character })
         });
-    
+
         const result = await response.json();
         alert(result.message || "Character saved.");
       } catch (error) {
@@ -270,7 +270,7 @@ function App() {
         alert("You must be logged in to load.");
         return;
       }
-    
+
       try {
         const response = await fetch('https://cocbeyond.onrender.com/api/load-character', {
           method: 'GET',
@@ -278,7 +278,7 @@ function App() {
             'Authorization': `Bearer ${token}`
           }
         });
-    
+
         const data = await response.json();
         if (data.character) {
           setCharacter(data.character);
@@ -291,7 +291,7 @@ function App() {
       }
     };
 
-  
+
 
     function AuthFormInline({ authToken, setAuthToken}) {
       const [mode, setMode] = useState("login");
@@ -303,7 +303,7 @@ function App() {
         localStorage.removeItem("authToken");
         setAuthToken(null);
       };
-    
+
       const handleSubmit = async () => {
         const endpoint = `https://cocbeyond.onrender.com/api/${mode}`;
         const response = await fetch(endpoint, {
@@ -311,7 +311,7 @@ function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
         });
-    
+
         const data = await response.json();
         if (data.token) {
           localStorage.setItem('authToken', data.token);
@@ -321,7 +321,7 @@ function App() {
           alert(data.error || 'Something went wrong');
         }
       };
-    
+
       return (
         <div className="relative text-sm">
           {!authToken ? (
@@ -368,27 +368,27 @@ function App() {
 
     const getOccupationSkillTotal = () => {
       if (!occupationDetails || !Array.isArray(occupationDetails.skills)) return 0;
-    
+
       return character.skills.reduce((sum, s) => {
         const isOccupationSkill = occupationDetails.skills.includes(s.name);
         const spent = s.value - s.base;
         return isOccupationSkill && spent > 0 ? sum + spent : sum;
       }, 0);
     };
-    
+
     const getPersonalSkillTotal = () => {
       if (!occupationDetails || !Array.isArray(occupationDetails.skills)) return 0;
-    
+
       return character.skills.reduce((sum, s) => {
         const isOccupationSkill = occupationDetails.skills.includes(s.name);
         const spent = s.value - s.base;
         return !isOccupationSkill && spent > 0 ? sum + spent : sum;
       }, 0);
     };
-    
+
     const autoGenerateEquipment = async () => {
       try {
-        const [equipRes, weaponRes] = await Promise.all([
+        const [equipRes, weaponRes, toolRes] = await Promise.all([
           fetch('https://cocbeyond.onrender.com/api/generate-equipment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -398,12 +398,18 @@ function App() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ occupation: character.occupation })
+          }),
+          fetch('https://cocbeyond.onrender.com/api/generate-tools', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ occupation: character.occupation })
           })
         ]);
-    
+
         const { equipment } = await equipRes.json();
         const { weapon } = await weaponRes.json();
-    
+        const { tool } = await toolRes.json();
+
         const cleanedItems = Array.isArray(equipment)
           ? equipment.map(item => ({
               name: item.name || '',
@@ -411,7 +417,7 @@ function App() {
               weight: parseFloat(item.weight) || 0,
             }))
           : [];
-    
+
         const cleanedWeapon = {
           name: weapon.name || '',
           damage: weapon.damage || '',
@@ -421,18 +427,29 @@ function App() {
           cost: weapon.cost || '',
           malfunction: weapon.malfunction || ''
         };
-    
+
+        const cleanedTools = Array.isArray(tool)
+          ? tool.map(item => ({
+            name: item.name || '',
+            description: item.description || '',
+            cost: item.cost || '',
+            weight: parseFloat(item.weight) || 0,
+            useCase: item.useCase || ''
+            }))
+          : [];
+
         setCharacter(prev => ({
           ...prev,
           equipment: {
             ...prev.equipment,
             special: cleanedItems,
-            weapons: cleanedWeapon
+            weapons: cleanedWeapon,
+            tools: cleanedTools
           }
         }));
       } catch (err) {
         console.error("Auto-generation failed:", err);
-        alert("Failed to generate equipment or weapon.");
+        alert("Failed to generate equipment.");
       }
     };
 
