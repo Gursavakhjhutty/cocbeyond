@@ -629,11 +629,11 @@ function App() {
                 >
                   Auto-Generate
                 </button>
+
                 {Object.entries(character.equipment).map(([category, value]) => (
                   <div key={category} className="mb-4">
-                    <label className="block text-eldritch-accent font-semibold mb-1 capitalize">{category}</label>
+                    <label className="block text-eldritch-accent font-semibold mb-1 uppercase tracking-wide">{category}</label>
 
-                    {/* Render weapons field (wrapped in array for consistent mapping) */}
                     {category === "weapons" && value && typeof value === "object" ? (
                       [value].map((weapon, idx) => (
                         <div key={idx} className="mb-4 p-3 bg-gray-800/40 rounded border border-gray-600">
@@ -646,6 +646,23 @@ function App() {
                             <span className="text-eldritch-highlight">Cost:</span> {weapon.cost} |{" "}
                             <span className="text-eldritch-highlight">Malfunction:</span> {weapon.malfunction || "N/A"}
                           </p>
+                        </div>
+                      ))
+                    ) : category === "tools" && Array.isArray(value) ? (
+                      value.map((tool, idx) => (
+                        <div key={idx} className="mb-3 p-3 bg-gray-800/40 rounded border border-gray-600">
+                          <p className="text-eldritch-accent font-bold">{tool.name}</p>
+                          <p className="text-gray-300 text-sm mb-1">{tool.description}</p>
+                          <p className="text-gray-400 text-xs italic">Use: {tool.useCase}</p>
+                          <p className="text-sm text-white">Qty: {tool.quantity || 1}, Cost: {tool.cost}, Wt: {tool.weight} lbs</p>
+                        </div>
+                      ))
+                    ) : category === "clothes" && Array.isArray(value) ? (
+                      value.map((item, idx) => (
+                        <div key={idx} className="mb-3 p-3 bg-gray-800/40 rounded border border-gray-600">
+                          <p className="text-eldritch-accent font-bold">{item.name}</p>
+                          <p className="text-gray-300 text-sm mb-1">{item.description}</p>
+                          <p className="text-sm text-white">Qty: {item.quantity || 1}, Cost: {item.cost}, Wt: {item.weight} lbs</p>
                         </div>
                       ))
                     ) : Array.isArray(value) ? (
