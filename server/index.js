@@ -288,7 +288,12 @@ app.post('/api/generate-clothes', async (req, res) => {
 
   try {
     const rawText = await queryGemini(prompt);
-    const clothes = extractJsonFromGeminiResponse(rawText);
+    // Try to parse with or without markdown
+    const match = rawText.match(/```json\s*([\s\S]*?)```/);
+    const jsonToParse = match ? match[1] : rawText;
+
+    const clothes = JSON.parse(jsonToParse.trim());
+
     res.json({ clothes });
   } catch (err) {
     console.error('Gemini Clothing Error:', err);
