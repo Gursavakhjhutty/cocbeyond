@@ -239,6 +239,17 @@ function App() {
         alert("You must be logged in to save.");
         return;
       }
+      const cleanedSkills = character.skills.map(({ name, base, value, improved }) => ({
+        name,
+        base,
+        value,
+        improved: !!improved,
+      }));
+      
+      const cleanedCharacter = {
+        ...character,
+        skills: cleanedSkills,
+      };
 
       try {
         const response = await fetch('https://cocbeyond.onrender.com/api/save-character', {
@@ -247,7 +258,7 @@ function App() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify({ character })
+          body: JSON.stringify({ character: cleanedCharacter })
         });
 
         const result = await response.json();
@@ -909,7 +920,7 @@ function App() {
                       ) : Array.isArray(items) ? (
                         <div className="grid grid-cols-1 gap-2">
                           {items.map((item, i) => (
-                            <div key={i} className="bg-eldritch-panel/25 p-3 rounded border border-gray-700 text-sm text-white">
+                            <div key={i} className="bg-eldritch-panel/25 p-2 rounded border border-gray-700 text-sm text-white">
                               <p className="font-semibold text-eldritch-highlight">{item.name}</p>
                               {item.description && <p className="italic text-xs text-gray-400 mb-1">{item.description}</p>}
                               <p>
