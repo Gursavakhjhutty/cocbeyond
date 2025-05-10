@@ -974,9 +974,17 @@ function App() {
           </div>
 
 
-          <div className="flex text-right mb-3 gap-1">
+          <div className="flex text-right mb-3 gap-1 overflow-x-auto md:overflow-x-visible whitespace-nowrap">
             {steps.map((label, idx) => (
-              <button key={label} onClick={() => setStep(idx)} className={`px-3 py-1 rounded border ${idx === step ? 'bg-[#8effa0] text-black' : 'border-eldritch-accent text-eldritch-accent'}`}>
+              <button
+                key={label}
+                onClick={() => setStep(idx)}
+                className={`px-3 py-1 rounded border shrink-0 ${
+                  idx === step
+                    ? 'bg-[#8effa0] text-black'
+                    : 'border-eldritch-accent text-eldritch-accent'
+                }`}
+              >
                 {label}
               </button>
             ))}
