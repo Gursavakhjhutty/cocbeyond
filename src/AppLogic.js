@@ -95,13 +95,13 @@ export async function generateOccupationData(occupation, setOccupationDetails) {
   setOccupationDetails({ creditRating, skills, description, points });
 }
 
-export function useOccupationEffect(occupation, setOccupationDetails) {
+/*export function useOccupationEffect(occupation, setOccupationDetails) {
   useEffect(() => {
     if (occupation) {
       generateOccupationData(occupation, setOccupationDetails);
     }
   }, [occupation]);
-}
+}*/
 
 if (typeof window !== "undefined") {
   window.generateAttributes = generateAttributes;

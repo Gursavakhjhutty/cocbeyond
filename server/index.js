@@ -163,7 +163,7 @@ app.post('/api/login', (req, res) => {
     res.json({ token });
 });
 
-app.post('/api/occupation-description', async (req, res) => {
+/*app.post('/api/occupation-description', async (req, res) => {
   const { occupation } = req.body;
   if (!occupation) return res.status(400).json({ error: 'Missing occupation field' });
 
@@ -187,7 +187,7 @@ app.post('/api/occupation-description', async (req, res) => {
     console.error('Gemini API Error:', err);
     res.status(500).json({ description: 'Description unavailable.' });
   }
-});
+});*/
   
 app.post('/api/generate-equipment', async (req, res) => {
     const { occupation } = req.body;

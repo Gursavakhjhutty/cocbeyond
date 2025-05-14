@@ -4,6 +4,7 @@ import { SKILLS, generateAttributes, rollNd6, fetchGeminiDescription, generateOc
 } from './AppLogic.js';
 import './particles.css';
 import '../public/particles-init.js';
+import { OCCUPATIONS } from './occupations.js';
 
 
 // coc_webapp_starter - React + Tailwind project
@@ -564,7 +565,26 @@ function App() {
                   <label className="block mb-1 text-eldritch-accent">Sur Name</label>
                   <input type="text" name="familyname" value={character.familyname} onChange={handleInputChange} className="text-black px-2 py-1 rounded w-full mb-3"/>
                   <label className="block mb-1 text-eldritch-accent">Occupation</label>
-                  <input type="text" name="occupation" value={character.occupation} onChange={handleInputChange} className="text-black px-2 py-1 rounded w-full mb-3" />
+                  <select
+                    name="occupation"
+                    value={character.occupation}
+                    onChange={(e) => {
+                      const selectedOccupation = OCCUPATIONS.find(o => o.name === e.target.value);
+                      setCharacter(prev => ({
+                        ...prev,
+                        occupation: selectedOccupation.name,
+                      }));
+                      setOccupationDetails(selectedOccupation);
+                    }}
+                    className="text-black px-2 py-1 rounded w-full mb-3"
+                  >
+                    <option value="">Select Occupation</option>
+                    {OCCUPATIONS.map((occ) => (
+                      <option key={occ.name} value={occ.name}>
+                        {occ.name}
+                      </option>
+                    ))}
+                  </select>
                   <label className="block mb-1 text-eldritch-accent">Age</label>
                   <input type="number" name="age" value={character.age} onChange={handleInputChange} className="text-black px-2 py-1 rounded w-full mb-3" />
                   <text ></text>
