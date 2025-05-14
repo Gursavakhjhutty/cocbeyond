@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { SKILLS, generateAttributes, rollNd6, fetchGeminiDescription, generateOccupationData, useOccupationEffect
+import { SKILLS, generateAttributes, rollNd6, fetchGeminiDescription, generateOccupationData
 } from './AppLogic.js';
 import './particles.css';
 import '../public/particles-init.js';
