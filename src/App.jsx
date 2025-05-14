@@ -82,7 +82,7 @@ function App() {
     }, []);
 
 
-    useOccupationEffect(debouncedOccupation, setOccupationDetails);
+    //useOccupationEffect(debouncedOccupation, setOccupationDetails);
 
     const steps = ["Attributes", "Identity", "Skills", "Equipment", "Backstory", "Condensed Character Sheet"];
 
