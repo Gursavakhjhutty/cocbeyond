@@ -964,7 +964,7 @@ function App() {
             ) : (
               <div className="bg-eldritch-panel/40 rounded-xl shadow-md p-6 border border-yellow-600 text-center text-yellow-200">
                 <h2 className="text-xl font-bold uppercase tracking-wide mb-2">Character Sheet Locked</h2>
-                <p className="mb-1">Please roll your Attributes to continue.</p>
+                <p className="mb-1">Please roll your Attributes and fill out the Identity information to continue.</p>
               </div>
             );
         default:

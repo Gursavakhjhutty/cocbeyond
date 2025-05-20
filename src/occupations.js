@@ -1,13 +1,6 @@
 // src/occupations.js
 export const OCCUPATIONS = [
   {
-    name: "Antiquarian",
-    description: "A collector and student of rare and ancient objects.",
-    creditRating: "30-60",
-    skills: ["Appraise", "History", "Library Use", "Other Language", "Own Language", "Spot Hidden", "Any two other skills"],
-    points: 260
-  },
-  {
     name: "Detective",
     description: "An investigator for hire or part of law enforcement.",
     creditRating: "20-50",

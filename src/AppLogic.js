@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { OCCUPATIONS } from "./occupations";
 
 export const SKILLS = [
   { name: "Accounting", base: 5 },
@@ -74,7 +75,7 @@ export function splitSkillsIntoColumns(skills, columns) {
   );
 }
 
-export async function fetchGeminiDescription(occupation) {
+/*export async function fetchGeminiDescription(occupation) {
   const res = await fetch("https://cocbeyond.onrender.com/api/occupation-description", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -83,14 +84,15 @@ export async function fetchGeminiDescription(occupation) {
 
   const data = await res.json();
   return data.description || "Description unavailable.";
-}
+}*/
 
 export async function generateOccupationData(occupation, setOccupationDetails) {
   if (!occupation) return;
-  const creditRating = `${Math.floor(Math.random() * 21) + 20}-${Math.floor(Math.random() * 31) + 50}`;
-  const skills = ["Persuade", "Psychology", "Library Use", "Accounting", "Anthropology", "Appraise", "First Aid", "Listen", "History", "Charm"];
-  const points = Math.floor(Math.random() * (290 - 180 + 1)) + 180;
-  const description = await fetchGeminiDescription(occupation);
+  const selectedOccupation = OCCUPATIONS.find(o => o.name === occupation);
+  const creditRating = selectedOccupation?.creditRating || "Credit Rating unavailable.";
+  const skills = selectedOccupation?.skills || "Skills unavailable.";
+  const points = selectedOccupation?.points || "Points unavailable.";
+  const description = selectedOccupation?.description || "Description unavailable.";
 
   setOccupationDetails({ creditRating, skills, description, points });
 }
