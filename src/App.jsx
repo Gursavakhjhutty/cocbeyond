@@ -207,7 +207,7 @@ function App() {
       };
 
 
-    const skillColumns = splitSkillsIntoColumns(character.skills, 4);
+    const skillColumns = splitSkillsIntoColumns(character.skills, 5);
 
 
     const rollWeaponDamage = (damageString) => {
