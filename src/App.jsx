@@ -207,7 +207,7 @@ function App() {
       };
 
 
-    const skillColumns = splitSkillsIntoColumns(character.skills, 6);
+    const skillColumns = splitSkillsIntoColumns(character.skills, 5);
 
 
     const rollWeaponDamage = (damageString) => {
@@ -631,7 +631,7 @@ function App() {
                   </div>
                 )}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 {skillColumns.map((column, colIdx) => (
                   <div key={colIdx} className="flex flex-col gap-4">
                     {column.map((skill, index) => (
